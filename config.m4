@@ -24,6 +24,10 @@ if test "$PHP_PDO_SQLCIPHER" != "no"; then
         pdo_inc_path=$prefix/include/php/5.5/php/ext
     elif test -f $prefix/include/php/5.6/php/ext/pdo/php_pdo_driver.h; then
         pdo_inc_path=$prefix/include/php/5.6/php/ext
+    elif test -f $prefix/include/php/7.0/php/ext/pdo/php_pdo_driver.h; then
+        pdo_inc_path=$prefix/include/php/7.0/php/ext
+    elif test -f $prefix/include/php/7.1/php/ext/pdo/php_pdo_driver.h; then
+        pdo_inc_path=$prefix/include/php/7.1/php/ext
     else
         AC_MSG_ERROR([Cannot find php_pdo_driver.h.])
     fi
