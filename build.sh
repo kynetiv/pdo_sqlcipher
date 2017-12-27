@@ -166,6 +166,12 @@ if [ $? -ne 0 ]; then
 	exit $?
 fi
 
+# Add crypto sources for Windows build
+cp "${SQLCIPHER_SRC}/src/crypto"* "${BUILD_DIR}"
+if [ $? -ne 0 ]; then
+    exit $?
+fi
+
 for FILE in "${BUILD_DIR}"/sqlcipher3.*
 do
 	sed -ie 's/sqlite3/sqlcipher3/g' "${FILE}"
@@ -263,7 +269,8 @@ fi
 # Clean
 #
 
-rm -rf ${PHP_SRC}
-rm -rf ${SQLCIPHER_SRC}
-rm -rf ${BUILD_DIR}
-rm -f  ${PHP_TGZ}
+## Leave these sources for windows
+#rm -rf ${PHP_SRC}
+#rm -rf ${SQLCIPHER_SRC}
+#rm -rf ${BUILD_DIR}
+#rm -f  ${PHP_TGZ}
